@@ -22,7 +22,8 @@ ________________________________________________________________________________
 WELCOME TO MODIFIED HANGMAN IN PYTHON
 By: Jan Neal Isaac D. Villamin
 """)
-play = input("Press ENTER or any KEY to play!: ")
+play = input("""Press ENTER or any KEY to play!: """)
+print("")
 
 # Game Rules
 game_rules = """GAME PLAY
@@ -46,6 +47,8 @@ OBJECTIVE
 Guess the word or phrase before your man gets hung!"""
 
 yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
+print("")
+
 if yes_no_game_rules == "y":
     print(game_rules)
 
@@ -57,28 +60,95 @@ santa_rosa_places = ["nuvali", "sm santa rosa", "robinsons santa rosa", "sports 
 list_of_editions = [nba_players, filipino_foods, santa_rosa_places]
 
 id_of_edition_to_play = input("What edition do you want to play? [Type 1 - NBA players; Type 2 - Filipino Foods; Type 3 - Santa Rosa Places]: ")
+print("")
+
 edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1]
 
 # Randomly selecting word
 random_index = random.randint(0, len(edition_to_play) - 1)
 word = edition_to_play[random_index]
 temporary_string = ""
+
 for letter in word:
     if letter != " ":
         temporary_string += "-"
     else:
         temporary_string += letter
-print(temporary_string)
+
+# Hangman ACSII arts
+hangman_arts = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+      |
+ /|\  |
+ / \  |
+=========''']
+lives = len(hangman_arts) - 1
 
 # Solo Game algorithm
+print(temporary_string)
+print(hangman_arts[len(hangman_arts) - lives - 1])
 new_temporary_string = ""
-lives = 3
 guess_word = ""
+
 while temporary_string != word and lives > 0 and guess_word != word:
     guess = input("Guess letter: ")
     guess_word = input("Guess word (press ENTER or type any KEY if you don't have any guess): ")
+    print("")
+
     compare_string = temporary_string
     lives_string = "Lives: {}".format(lives)
+
     if guess in word:
         for i in range(len(word)):
             if word[i] == guess:
@@ -87,20 +157,31 @@ while temporary_string != word and lives > 0 and guess_word != word:
                 new_temporary_string = compare_string
             compare_string = new_temporary_string
             print(compare_string)
+
         if temporary_string == new_temporary_string:
             print("Oh no! " + lives_string)
+            print("")
         elif temporary_string != new_temporary_string:
             print(compare_string)
             print("Nice work! " + lives_string)
+            print(hangman_arts[len(hangman_arts) - lives - 1])
+            print("")
     else:
         if new_temporary_string == "":
             print(temporary_string)
         else:
             print(new_temporary_string)
+
         lives = lives - 1
         lives_string = "Lives: {}".format(lives)
-        print("Oh no! The letter is not in the word. " + lives_string)         
-    temporary_string = new_temporary_string
+
+        print("Oh no! The letter is not in the word. " + lives_string)
+        print(hangman_arts[len(hangman_arts) - lives - 1])
+        print("")
+
+    if new_temporary_string != "":
+        temporary_string = new_temporary_string
+
 if temporary_string == word or guess_word == word:
     print("You win!")
 else:
