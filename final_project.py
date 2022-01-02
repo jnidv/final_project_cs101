@@ -19,10 +19,10 @@ print("""
 | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
 ______________________________________________________________________________________________________________________________________________
-WELCOME TO MODIFIED HANGMAN IN PYTHON
+WELCOME TO SINGLEPLAYER HANGMAN IN PYTHON
 By: Jan Neal Isaac D. Villamin
 """)
-play = input("""Press ENTER or any KEY to play!: """)
+play = input("Press ENTER to play!: ")
 print("")
 
 # Game Rules
@@ -44,7 +44,8 @@ six wrong answers until the game ends. The first player to guess the correct ans
 for the next game.
 
 OBJECTIVE
-Guess the word or phrase before your man gets hung!"""
+Guess the word or phrase before your man gets hung!
+"""
 
 yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
 print("")
@@ -153,19 +154,16 @@ while temporary_string != word and lives > 0 and guess_word != word:
         for i in range(len(word)):
             if word[i] == guess:
                 new_temporary_string = compare_string[:i] + guess + compare_string[i+1:]
+
             if new_temporary_string == "":
                 new_temporary_string = compare_string
             compare_string = new_temporary_string
-            print(compare_string)
 
-        if temporary_string == new_temporary_string:
-            print("Oh no! " + lives_string)
-            print("")
-        elif temporary_string != new_temporary_string:
-            print(compare_string)
-            print("Nice work! " + lives_string)
-            print(hangman_arts[len(hangman_arts) - lives - 1])
-            print("")
+        print(compare_string)
+        print("Nice work! " + lives_string)
+        print(hangman_arts[len(hangman_arts) - lives - 1])
+        print("")
+
     else:
         if new_temporary_string == "":
             print(temporary_string)
@@ -183,6 +181,6 @@ while temporary_string != word and lives > 0 and guess_word != word:
         temporary_string = new_temporary_string
 
 if temporary_string == word or guess_word == word:
-    print("You win!")
+    print("You win! The word is " + word + ".")
 else:
-    print("You lose!")
+    print("You lose! The word is " + word + ".")
