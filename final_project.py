@@ -12,21 +12,30 @@ for letter in word:
 print(temporary_string)
 new_temporary_string = ""
 tries = 3
-while temporary_string != word and tries > 0:
+guess_word = ""
+while temporary_string != word and tries > 0 and guess_word != word:
     guess = input("Guess letter: ")
+    guess_word = input("Guess word (press ENTER or type any KEY if you don't have any guess): ")
     compare_string = temporary_string
     if guess in word:
         for i in range(len(word)):
             if word[i] == guess:
                 new_temporary_string = compare_string[:i] + guess + compare_string[i+1:]
             compare_string = new_temporary_string
+        if temporary_string == new_temporary_string:
+            print("Oh no!")
+        elif temporary_string != new_temporary_string:
+            print(new_temporary_string)
+            print("Nice work!")
     else:
+        if new_temporary_string == "":
+            print(temporary_string)
+        else:
+            print(new_temporary_string)
         print("Oh no!")
         tries = tries - 1         
-    if temporary_string == new_temporary_string:
-        print("Oh no!")
-    elif temporary_string != new_temporary_string:
-        print(new_temporary_string)
-        print("Nice work!")
     temporary_string == new_temporary_string
-print("You lose!")
+if temporary_string == word or guess_word == word:
+    print("You win!")
+else:
+    print("You lose!")
