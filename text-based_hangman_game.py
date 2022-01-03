@@ -20,36 +20,33 @@ By: Jan Neal Isaac D. Villamin
 """)
     print(line)
     play = input("Press ENTER to play!: ")
-    print("")
+    print()
 
 def ask_for_game_rule():
     # Game Rules
     game_rules = """GAME PLAY
-The program will ask you to select an EDITION, themed sets of words. The executer will ask you a RANDOM 
-WORD from that EDITION.
+The program will ask you to select an EDITION, themed sets of words. 
+The executer will ask you a RANDOM WORD from that EDITION.
 
-A number of DASHES equivalent to the number of letters in the word will be displayed. If a guessing 
-player suggests a LETTER that occurs in the word, the program fills in the blanks with that letter in 
-the right places. 
+A number of DASHES equivalent to the number of letters in the word will be displayed. 
+If a guessing player suggests a LETTER that occurs in the word, the program fills in the blanks with that letter in the right places. 
 
 If the word does not contain the suggested letter, the program draws one element of a hangmans gallows. 
-As the game progresses, a segment of the gallows and of a victim is added for every suggested letter 
-not in the word. 
+As the game progresses, a segment of the gallows and of a victim is added for every suggested letter not in the word. 
 
-The number of incorrect guesses before the game ends is up to the difficulty of the game, but completing 
-a character in a noose provides a minimum of SEVEN wrong answers until the game ends. The first player to 
-guess the correct answer thinks of the word for the next game.
+The number of incorrect guesses before the game ends is up to the difficulty of the game, 
+but completing a character in a noose provides a minimum of SEVEN wrong answers until the game ends. 
 
 RESTRICTIONS
-Follow the input formats given as much as possible. Only lowercase letters are allowed. Otherwise, bugs 
-might go flyin' in your screen.
+Follow the input formats given as much as possible. Only lowercase letters are allowed. 
+Otherwise, bugs might go flyin' in your screen.
 
 OBJECTIVE
 Guess the word or phrase before your hangman gets hanged!
 """
 
     yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
-    print("")
+    print()
 
     if yes_no_game_rules == "y":
         print(game_rules)
@@ -61,61 +58,32 @@ def select_edition():
     "karl anthony towns", "demar derozan", "carmelo anthony", "klay thompson", "paul george", "jimmy butler", "draymond green", 
     "kyle lowry", "kobe bryant", "michael jordan", "jayson tatum", "bradley beal", "devin booker", "donovan mitchell", 
     "trae young", "zion williamson", "ja morant", "ben simmons", "zach lavine", "jamal murray"]
+
     filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balut", "taho", 
     "lechon", "sisig", "crispy pata", "chicken inasal", "pancit palabok", "arroz caldo", "kare kare", "tapa", "dinuguan", "puto", 
     "pinakbet", "laing", "pancit habhab", "longaniza", "lumpia", "bicol express", "liempo", "halo halo", "champorado", "turon"]
+
     philippines_landmarks = ["chocolate hills", "banaue rice terraces", "mayon volcano", "taal volcano", "fort santiago", 
     "rizal monument", "tarsiers", "boracay", "tubbataha reefs", "puerto princesa subterranean river", "maria cristina falls"]
 
-    list_of_editions = [nba_players, filipino_foods, philippines_landmarks]
+    list_of_editions = [[nba_players, "NBA Players"], [filipino_foods, "Filipino Foods"], [philippines_landmarks, "Philippine Landmarks"]]
 
     correct = True
     while correct:
-        id_of_edition_to_play = input("What edition do you want to play? [1 - NBA players; 2 - Filipino Foods; 3 - Philippine Landmarks]: ")
-        print("")
+        id_of_edition_to_play = input("What edition do you want to play? [1 - NBA Players; 2 - Filipino Foods; 3 - Philippine Landmarks]: ")
+        print()
 
         list_of_number_str = []
         for i in range(len(list_of_editions)):
             list_of_number_str.append(str(i+1))
 
         if id_of_edition_to_play in list_of_number_str:
-            edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1]
+            edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1][0]
+            name_of_edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1][1]
             correct = False
-            return edition_to_play
+            return edition_to_play, name_of_edition_to_play
             
 def play_game():
-    # Dialogues
-    dialogues_start = ["Please help me!", "You can do it!", "Focus!", "I love you! So please save me."]
-
-    random_index1 = random.randint(0, len(dialogues_start) - 1)
-    dialogue = dialogues_start[random_index1]
-
-    negative_dialogues = ["Better guess that word!", "Anything happens, just know that I love you", "I know you can do better than that!", 
-    "Oh c'mon!"]
-    
-    positive_dialogues = ["Good job!", "Keep it up!", "Whooo!", "GRAPE!"]
-
-    # Story
-    hangman = input("Name your hangman: ")
-    gender = input("Gender of your hangman [him/her/them/hir]: ")
-    print("")
-    hanged = input("Oh no! " + hangman + " will be hanged! [Press ENTER to continue]")
-    initialize = input("Guess the word to release " + gender + ". [Press ENTER to start game]: ")
-
-    print("")
-    print(line)
-
-    # Randomly selecting word
-    random_index4 = random.randint(0, len(edition_to_play) - 1)
-    word = edition_to_play[random_index4]
-    temporary_string = ""
-
-    for letter in word:
-        if letter != " ":
-            temporary_string += "-"
-        else:
-            temporary_string += letter
-    
     # Hangman ASCII arts
     hangman_arts = ['''
   +---+
@@ -175,17 +143,54 @@ def play_game():
  / \  |
 =========''']
 
+    # Dialogues
+    dialogues_start = ["Please help me!", "You can do it!", "Focus!", "I love you! So please save me."]
+
+    random_index1 = random.randint(0, len(dialogues_start) - 1)
+    dialogue = dialogues_start[random_index1]
+
+    negative_dialogues = ["Better guess that word!", "If anything happens, just know that I love you.", "I know you can do better than that!", 
+    "Oh c'mon!"]
+    
+    positive_dialogues = ["Good job!", "Keep it up!", "Whooo!", "GRAPE!"]
+
+    # Story
+    hangman = input("Name your hangman: ")
+    gender = input("Gender of your hangman [him/her/them/hir]: ")
+    print()
+    hanged = input("Oh no! " + hangman + " will be hanged! [Press ENTER to continue]: ")
+    initialize = input("Guess the word to release " + gender + ". [Press ENTER to start game]: ")
+
+    print()
+    print(line)
+
+    # Randomly selecting word
+    random_index4 = random.randint(0, len(edition_to_play) - 1)
+    word = edition_to_play[random_index4]
+    temporary_string = ""
+
+    for letter in word:
+        if letter != " ":
+            temporary_string += "-"
+        else:
+            temporary_string += letter
+
     # Solo game main algorithm
     lives = len(hangman_arts) - 1
+    lives_string = "Lives: {}".format(lives)
+
+    print("Let's start the game! " + lives_string)
+    print("Edition: " + name_of_edition_to_play)
     print("Word: " + temporary_string)
     print(hangman_arts[len(hangman_arts) - lives - 1])
     print(hangman + ": " + dialogue)
-    print("")
+    print()
 
     new_temporary_string = ""
     guess_word = ""
     letters_used = "Letters already used: "
 
+    # Loop until we win
     while temporary_string != word and lives > 0 and guess_word != word:
         random_index2 = random.randint(0, len(negative_dialogues) - 1)
         negative_dialogue = negative_dialogues[random_index2]
@@ -195,7 +200,8 @@ def play_game():
 
         guess = input("Guess letter: ")
         guess_word = input("Guess word (press ENTER if you don't have any guess): ")
-        print("")
+        print()
+
         letters_used += guess + " "
         print(line)
         print(letters_used)
@@ -212,29 +218,32 @@ def play_game():
                     new_temporary_string = compare_string
                 compare_string = new_temporary_string
 
-            print("Word: " + compare_string)
             print("Nice work! " + lives_string)
+            print("Edition: " + name_of_edition_to_play)
+            print("Word: " + compare_string)
             print(hangman_arts[len(hangman_arts) - lives - 1])
             print(hangman + ": " + positive_dialogue)
-            print("")
+            print()
 
         elif not guess in word or (guess == "" and guess_word != word):
-            if new_temporary_string == "":
-                print("Word: " + temporary_string)
-            else:
-                print("Word: " + new_temporary_string)
-
             lives = lives - 1
             lives_string = "Lives: {}".format(lives)
-
             print("Oh no! The letter is not in the word. " + lives_string)
+
+            if new_temporary_string == "":
+                print("Edition: " + name_of_edition_to_play)
+                print("Word: " + temporary_string)
+            else:
+                print("Edition: " + name_of_edition_to_play)
+                print("Word: " + new_temporary_string)
+
             print(hangman_arts[len(hangman_arts) - lives - 1])
             
             if lives > 0:
                 print(hangman + ": " + negative_dialogue)
             else:
                 print(hangman + ": Noooooooo-")
-            print("")
+            print()
 
         if new_temporary_string != "":
             temporary_string = new_temporary_string
@@ -249,7 +258,7 @@ def play_game():
     """)
         print("The word is " + word + ".")
         print(hangman + ": Thank you!")
-        print("")
+        print()
     else:
         print(""" __     __           _                  _ 
  \ \   / /          | |                | |
@@ -260,7 +269,7 @@ def play_game():
                                           
     """)
         print("The word is " + word + ".")
-        print("")
+        print()
 
 # Play game
 play = True
@@ -274,19 +283,21 @@ while game_status:
     print(line)
 
     while play:  
-        edition_to_play = select_edition()
+        edition_to_play, name_of_edition_to_play = select_edition()
         print(line)
 
         play_game()
         print(line)
 
         again = input("Play again? (y/n): ")
+        print()
         print(line)
 
         if again == "n":
             play = False
 
     return_to_menu = input("Return to main menu? (y/n): ")
+    print()
     print(line)
 
     if return_to_menu == "n":
