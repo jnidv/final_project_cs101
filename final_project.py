@@ -265,3 +265,6 @@ while game_status:
     return_to_menu = input("Return to main menu? (y/n): ")
     if return_to_menu == "n":
         game_status = False
+    else:
+        play = True
+        game_status = True
