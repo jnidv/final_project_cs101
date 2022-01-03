@@ -1,8 +1,6 @@
 # Libraries
 import random
 
-# Classes
-
 # Functions
 def main_menu():
     # Main Menu
