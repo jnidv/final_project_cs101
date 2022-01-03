@@ -15,8 +15,8 @@ def main_menu():
 |  |  |  |  /  _____  \  |  |\   | |  |__| | |  |  |  |  /  _____  \  |  |\   |  / \  | 
 |__|  |__| /__/     \__\ |__| \__|  \______| |__|  |__| /__/     \__\ |__| \__| =========
 """, """
-WELCOME TO SINGLEPLAYER HANGMAN IN PYTHON
-By: Jan Neal Isaac D. Villamin
+WELCOME TO TEXT-BASED SINGLEPLAYER HANGMAN CODED IN PYTHON
+Creator: Jan Neal Isaac D. Villamin
 """)
     print(line)
     play = input("Press ENTER to play!: ")
