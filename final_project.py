@@ -25,11 +25,11 @@ By: Jan Neal Isaac D. Villamin
 def ask_for_game_rule():
     # Game Rules
     game_rules = """GAME PLAY
-The program will ask you to select an EDITION, themed sets of words. The executer will ask you a random 
-word from that EDITION.
+The program will ask you to select an EDITION, themed sets of words. The executer will ask you a RANDOM 
+WORD from that EDITION.
 
-A number of dashes equivalent to the number of letters in the word will be displayed. If a guessing 
-player suggests a letter that occurs in the word, the program fills in the blanks with that letter in 
+A number of DASHES equivalent to the number of letters in the word will be displayed. If a guessing 
+player suggests a LETTER that occurs in the word, the program fills in the blanks with that letter in 
 the right places. 
 
 If the word does not contain the suggested letter, the program draws one element of a hangmans gallows. 
@@ -37,8 +37,12 @@ As the game progresses, a segment of the gallows and of a victim is added for ev
 not in the word. 
 
 The number of incorrect guesses before the game ends is up to the difficulty of the game, but completing 
-a character in a noose provides a minimum of six wrong answers until the game ends. The first player to 
+a character in a noose provides a minimum of SEVEN wrong answers until the game ends. The first player to 
 guess the correct answer thinks of the word for the next game.
+
+RESTRICTIONS
+Follow the input formats given as much as possible. Only lowercase letters are allowed. Otherwise, bugs 
+might go flyin' in your screen.
 
 OBJECTIVE
 Guess the word or phrase before your hangman gets hanged!
@@ -52,15 +56,22 @@ Guess the word or phrase before your hangman gets hanged!
 
 def select_edition():
     # Editions and selecting editions
-    nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", "damian lillard"]
-    filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balot", "taho"]
-    santa_rosa_places = ["nuvali", "sm santa rosa", "robinsons santa rosa", "sports complex", "plaza", "target mall", "waltermart", "enchanted kingdom"]
+    nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", 
+    "damian lillard", "chris paul", "luka doncic", "russell westbrook", "joel embiid", "kawhi leonard", "kyrie irving", 
+    "karl anthony towns", "demar derozan", "carmelo anthony", "klay thompson", "paul george", "jimmy butler", "draymond green", 
+    "kyle lowry", "kobe bryant", "michael jordan", "jayson tatum", "bradley beal", "devin booker", "donovan mitchell", 
+    "trae young", "zion williamson", "ja morant", "ben simmons", "zach lavine", "jamal murray"]
+    filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balut", "taho", 
+    "lechon", "sisig", "crispy pata", "chicken inasal", "pancit palabok", "arroz caldo", "kare kare", "tapa", "dinuguan", "puto", 
+    "pinakbet", "laing", "pancit habhab", "longaniza", "lumpia", "bicol express", "liempo", "halo halo", "champorado", "turon"]
+    philippines_landmarks = ["chocolate hills", "banaue rice terraces", "mayon volcano", "taal volcano", "fort santiago", 
+    "rizal monument", "tarsiers", "boracay", "tubbataha reefs", "puerto princesa subterranean river", "maria cristina falls"]
 
-    list_of_editions = [nba_players, filipino_foods, santa_rosa_places]
+    list_of_editions = [nba_players, filipino_foods, philippines_landmarks]
 
     correct = True
     while correct:
-        id_of_edition_to_play = input("What edition do you want to play? [Type 1 - NBA players; Type 2 - Filipino Foods; Type 3 - Santa Rosa Places;]: ")
+        id_of_edition_to_play = input("What edition do you want to play? [1 - NBA players; 2 - Filipino Foods; 3 - Philippine Landmarks]: ")
         print("")
 
         list_of_number_str = []
@@ -75,6 +86,7 @@ def select_edition():
 def play_game():
     # Dialogues
     dialogues_start = ["Please help me!", "You can do it!", "Focus!", "I love you! So please save me."]
+
     random_index1 = random.randint(0, len(dialogues_start) - 1)
     dialogue = dialogues_start[random_index1]
 
@@ -87,8 +99,9 @@ def play_game():
     hangman = input("Name your hangman: ")
     gender = input("Gender of your hangman [him/her/them/hir]: ")
     print("")
-    hanged = input("Oh no! " + hangman + " will be hanged! ")
-    initialize = input("Guess the word to release " + gender + """ [Press ENTER to start game] """)
+    hanged = input("Oh no! " + hangman + " will be hanged! [Press ENTER to continue]")
+    initialize = input("Guess the word to release " + gender + ". [Press ENTER to start game]: ")
+
     print("")
     print(line)
 
@@ -183,7 +196,7 @@ def play_game():
         guess = input("Guess letter: ")
         guess_word = input("Guess word (press ENTER if you don't have any guess): ")
         print("")
-        letters_used += guess + ", "
+        letters_used += guess + " "
         print(line)
         print(letters_used)
 
@@ -216,6 +229,7 @@ def play_game():
 
             print("Oh no! The letter is not in the word. " + lives_string)
             print(hangman_arts[len(hangman_arts) - lives - 1])
+            
             if lives > 0:
                 print(hangman + ": " + negative_dialogue)
             else:
@@ -255,19 +269,26 @@ game_status = True
 while game_status:
     main_menu()
     print(line)
+
     ask_for_game_rule()
     print(line)
+
     while play:  
         edition_to_play = select_edition()
         print(line)
+
         play_game()
         print(line)
+
         again = input("Play again? (y/n): ")
         print(line)
+
         if again == "n":
             play = False
+
     return_to_menu = input("Return to main menu? (y/n): ")
     print(line)
+
     if return_to_menu == "n":
         game_status = False
     else:
