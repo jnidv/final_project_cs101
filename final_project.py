@@ -8,24 +8,15 @@ def main_menu():
     # Main Menu
     print("""
 ______________________________________________________________________________________________________________________________________________
- .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .-----------------.
-| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
-| |  ____  ____  | || |      __      | || | ____  _____  | || |    ______    | || | ____    ____ | || |      __      | || | ____  _____  | |
-| | |_   ||   _| | || |     /  \     | || ||_   \|_   _| | || |  .' ___  |   | || ||_   \  /   _|| || |     /  \     | || ||_   \|_   _| | |
-| |   | |__| |   | || |    / /\ \    | || |  |   \ | |   | || | / .'   \_|   | || |  |   \/   |  | || |    / /\ \    | || |  |   \ | |   | |
-| |   |  __  |   | || |   / ____ \   | || |  | |\ \| |   | || | | |    ____  | || |  | |\  /| |  | || |   / ____ \   | || |  | |\ \| |   | |
-| |  _| |  | |_  | || | _/ /    \ \_ | || | _| |_\   |_  | || | \ `.___]  _| | || | _| |_\/_| |_ | || | _/ /    \ \_ | || | _| |_\   |_  | |
-| | |____||____| | || ||____|  |____|| || ||_____|\____| | || |  `._____.'   | || ||_____||_____|| || ||____|  |____|| || ||_____|\____| | |
-| |              | || |              | || |              | || |              | || |              | || |              | || |              | |
-| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
-                                                                    +---+
-                                                                    |   |
-                                                                    O   |
-                                                                   /|\  |
-                                                                   / \  |
-                                                                        |
-                                                                 =========
+ ██░ ██  ▄▄▄       ███▄    █   ▄████  ███▄ ▄███▓ ▄▄▄       ███▄    █    +---+
+▓██░ ██▒▒████▄     ██ ▀█   █  ██▒ ▀█▒▓██▒▀█▀ ██▒▒████▄     ██ ▀█   █    |   |
+▒██▀▀██░▒██  ▀█▄  ▓██  ▀█ ██▒▒██░▄▄▄░▓██    ▓██░▒██  ▀█▄  ▓██  ▀█ ██▒   O   |
+░▓█ ░██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█  ██▓▒██    ▒██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒  /|\  |
+░▓█▒░██▓ ▓█   ▓██▒▒██░   ▓██░░▒▓███▀▒▒██▒   ░██▒ ▓█   ▓██▒▒██░   ▓██░  / \  |
+ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒  ░▒   ▒ ░ ▒░   ░  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒        |
+ ▒ ░▒░ ░  ▒   ▒▒ ░░ ░░   ░ ▒░  ░   ░ ░  ░      ░  ▒   ▒▒ ░░ ░░   ░ ▒░=========
+ ░  ░░ ░  ░   ▒      ░   ░ ░ ░ ░   ░ ░      ░     ░   ▒      ░   ░ ░ 
+ ░  ░  ░      ░  ░         ░       ░        ░         ░  ░         ░ 
 ______________________________________________________________________________________________________________________________________________
 WELCOME TO SINGLEPLAYER HANGMAN IN PYTHON
 By: Jan Neal Isaac D. Villamin
@@ -67,21 +58,23 @@ def select_edition():
     nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", "damian lillard"]
     filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balot", "taho"]
     santa_rosa_places = ["nuvali", "sm santa rosa", "robinsons santa rosa", "sports complex", "plaza", "target mall", "waltermart", "enchanted kingdom"]
-    flores_students = ["john cesar balisacan", "lawrence albert bernasor", "roimarc bilbao", "jan rovic buenaventura", "niccolo coronel", 
-    "angelbert de leon", "marcus andrei funtila", "romano franco hurano", "ken louis insuelo", "kevin hans aurick mirabel", "miguel prospero", 
-    "wince larcen rivano", "aelijah andrei louis silao", "dylen gain solomo", "jon red suva", "jan neal isaac villamin", "james carl villanueva",  
-    "julian richmon villanueva", "emerald justine abrea", "avvy acgcaoili", "kirstine mary batiquin", "juliana baya", "kristine berdin", "angel marie canlobo", 
-    "angelo cielo cleto", "crystalline datu", "anne mae dela cruz", "kariza jhem dimaculungan", "iza belle enriquez", "kristine margaux fernandez", 
-    "rhyczholete asherie mari ferrer", "graziella sophia gagalang", "karyll heart layug", "dawn althea montoya", "maria victoria oafallas", 
-    "angela nicole porteria", "charisse elin ragasa", "clea nicole selosa", "guilliane ymanuelle valino", "ericka mae villamar"]
 
-    list_of_editions = [nba_players, filipino_foods, santa_rosa_places, flores_students]
+    list_of_editions = [nba_players, filipino_foods, santa_rosa_places]
 
-    id_of_edition_to_play = input("What edition do you want to play? [Type 1 - NBA players; Type 2 - Filipino Foods; Type 3 - Santa Rosa Places; Type 4 - Flores Students]: ")
-    print("")
+    correct = True
+    while correct:
+        id_of_edition_to_play = input("What edition do you want to play? [Type 1 - NBA players; Type 2 - Filipino Foods; Type 3 - Santa Rosa Places;]: ")
+        print("")
 
-    edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1]
-    return edition_to_play
+        list_of_number_str = []
+        for i in range(len(list_of_editions)):
+            list_of_number_str.append(str(i+1))
+
+        if id_of_edition_to_play in list_of_number_str:
+            edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1]
+            correct = False
+            return edition_to_play
+            
 
 def play_game():
     # Dialogues
@@ -95,12 +88,12 @@ def play_game():
     positive_dialogues = ["Good job!", "Keep it up!", "Whooo!", "GRAPE!"]
 
     # Story
-    think = input("Think about any of your loved ones: your best friend, girlfriend, boyfriend, anyone from the family, etc. ")
-    loved_one = input("Name your loved one: ")
-    gender = input("Gender of your loved one [him/her/them/hir]: ")
-    hanged = input("Oh no! " + loved_one + " will be hanged! ")
+    hangman = input("Name your hangman: ")
+    gender = input("Gender of your hangman [him/her/them/hir]: ")
+    hanged = input("Oh no! " + hangman + " will be hanged! ")
     initialize = input("Guess the word to release " + gender + """ [Press ENTER to start game] """)
     print("")
+    print("______________________________________________________________________________________________________________________________________________")
 
     # Randomly selecting word
     random_index4 = random.randint(0, len(edition_to_play) - 1)
@@ -176,6 +169,9 @@ def play_game():
     lives = len(hangman_arts) - 1
     print("Word: " + temporary_string)
     print(hangman_arts[len(hangman_arts) - lives - 1])
+    print(hangman + ": " + dialogue)
+    print("")
+
     new_temporary_string = ""
     guess_word = ""
     letters_used = "Letters already used: "
@@ -191,6 +187,7 @@ def play_game():
         guess_word = input("Guess word (press ENTER if you don't have any guess): ")
         print("")
         letters_used += guess + ", "
+        print("______________________________________________________________________________________________________________________________________________")
         print(letters_used)
 
         compare_string = temporary_string
@@ -208,7 +205,7 @@ def play_game():
             print("Word: " + compare_string)
             print("Nice work! " + lives_string)
             print(hangman_arts[len(hangman_arts) - lives - 1])
-            print(loved_one + ": " + positive_dialogue)
+            print(hangman + ": " + positive_dialogue)
             print("")
 
         elif not guess in word or (guess == "" and guess_word != word):
@@ -222,7 +219,10 @@ def play_game():
 
             print("Oh no! The letter is not in the word. " + lives_string)
             print(hangman_arts[len(hangman_arts) - lives - 1])
-            print(loved_one + ": " + negative_dialogue)
+            if lives > 0:
+                print(hangman + ": " + negative_dialogue)
+            else:
+                print(hangman + ": Noooooooo-")
             print("")
 
         if new_temporary_string != "":
@@ -237,6 +237,8 @@ def play_game():
     |_|\___/ \__,_|   \_/\_/ |_|_| |_(_)
     """)
         print("The word is " + word + ".")
+        print(hangman + ": Thank you!")
+        print("")
     else:
         print(""" __     __           _                  _ 
  \ \   / /          | |                | |
@@ -255,14 +257,20 @@ game_status = True
 
 while game_status:
     main_menu()
+    print("______________________________________________________________________________________________________________________________________________")
     ask_for_game_rule()
+    print("______________________________________________________________________________________________________________________________________________")
     while play:  
         edition_to_play = select_edition()
+        print("______________________________________________________________________________________________________________________________________________")
         play_game()
+        print("______________________________________________________________________________________________________________________________________________")
         again = input("Play again? (y/n): ")
+        print("______________________________________________________________________________________________________________________________________________")
         if again == "n":
             play = False
     return_to_menu = input("Return to main menu? (y/n): ")
+    print("______________________________________________________________________________________________________________________________________________")
     if return_to_menu == "n":
         game_status = False
     else:
