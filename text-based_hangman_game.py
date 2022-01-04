@@ -68,8 +68,8 @@ def select_edition():
 
     list_of_editions = [[nba_players, "NBA Players"], [filipino_foods, "Filipino Foods"], [philippines_landmarks, "Philippine Landmarks"]]
 
-    correct = True
-    while correct:
+    incorrect = True
+    while incorrect:
         id_of_edition_to_play = input("What edition do you want to play? [1 - NBA Players; 2 - Filipino Foods; 3 - Philippine Landmarks]: ")
         print()
 
@@ -80,7 +80,7 @@ def select_edition():
         if id_of_edition_to_play in list_of_number_str:
             edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1][0]
             name_of_edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1][1]
-            correct = False
+            incorrect = False
             return edition_to_play, name_of_edition_to_play
             
 def play_game():
@@ -167,8 +167,8 @@ def play_game():
     # Randomly selecting word
     random_index4 = random.randint(0, len(edition_to_play) - 1)
     word = edition_to_play[random_index4]
+    
     temporary_string = ""
-
     for letter in word:
         if letter != " ":
             temporary_string += "-"
@@ -209,13 +209,13 @@ def play_game():
         compare_string = temporary_string
         lives_string = "Lives: {}".format(lives)
 
-        if guess in word and not guess == "" and guess_word != word:
+        if (guess in word and not guess == "" and not guess == " ") and guess_word != word:
             for i in range(len(word)):
                 if word[i] == guess:
                     new_temporary_string = compare_string[:i] + guess + compare_string[i+1:]
-
-                if new_temporary_string == "":
+                else:
                     new_temporary_string = compare_string
+                    
                 compare_string = new_temporary_string
 
             print("Nice work! " + lives_string)
@@ -225,7 +225,7 @@ def play_game():
             print(hangman + ": " + positive_dialogue)
             print()
 
-        elif not guess in word or (guess == "" and guess_word != word):
+        elif not guess in word or (guess == "" and guess_word != word) or guess_word != word:
             lives = lives - 1
             lives_string = "Lives: {}".format(lives)
             print("Oh no! The letter is not in the word. " + lives_string)
