@@ -53,11 +53,7 @@ Guess the word or phrase before your hangman gets hanged!
 
 def select_edition():
     # Editions and selecting editions
-    nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", 
-    "damian lillard", "chris paul", "luka doncic", "russell westbrook", "joel embiid", "kawhi leonard", "kyrie irving", 
-    "karl anthony towns", "demar derozan", "carmelo anthony", "klay thompson", "paul george", "jimmy butler", "draymond green", 
-    "kyle lowry", "kobe bryant", "michael jordan", "jayson tatum", "bradley beal", "devin booker", "donovan mitchell", 
-    "trae young", "zion williamson", "ja morant", "ben simmons", "zach lavine", "jamal murray"]
+    nba_players = ["lebron james"]
 
     filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balut", "taho", 
     "lechon", "sisig", "crispy pata", "chicken inasal", "pancit palabok", "arroz caldo", "kare kare", "tapa", "dinuguan", "puto", 
@@ -223,9 +219,9 @@ def play_game():
             print("Word: " + compare_string)
             print(hangman_arts[len(hangman_arts) - lives - 1])
             print(hangman + ": " + positive_dialogue)
-            print()
+            print() 
 
-        elif not guess in word or (guess == "" and guess_word != word) or guess_word != word:
+        elif guess_word != word:
             lives = lives - 1
             lives_string = "Lives: {}".format(lives)
             print("Oh no! The letter is not in the word. " + lives_string)
