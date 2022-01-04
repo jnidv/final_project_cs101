@@ -186,6 +186,7 @@ def play_game():
     print(hangman + ": " + dialogue)
     print()
 
+    guess_word = ""
     letters_used = "Letters already used: "
 
     # Loop until we win
