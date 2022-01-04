@@ -186,7 +186,6 @@ def play_game():
     print(hangman + ": " + dialogue)
     print()
 
-    new_temporary_string = temporary_string
     guess_word = ""
     letters_used = "Letters already used: "
 
@@ -206,19 +205,19 @@ def play_game():
         print(line)
         print(letters_used)
 
-        compare_string = temporary_string
+        new_temporary_string = temporary_string
         lives_string = "Lives: {}".format(lives)
 
         if (guess in word and not guess == "" and not guess == " ") and guess_word != word:
             for i in range(len(word)):
                 if word[i] == guess:
-                    new_temporary_string = compare_string[:i] + guess + compare_string[i+1:]
+                    temporary_string = new_temporary_string[:i] + guess + new_temporary_string[i+1:]
                     
-                compare_string = new_temporary_string
+                new_temporary_string = temporary_string
 
             print("Nice work! " + lives_string)
             print("Edition: " + name_of_edition_to_play)
-            print("Word: " + compare_string)
+            print("Word: " + new_temporary_string)
             print(hangman_arts[len(hangman_arts) - lives - 1])
             print(hangman + ": " + positive_dialogue)
             print() 
@@ -229,7 +228,7 @@ def play_game():
             print("Oh no! The letter is not in the word. " + lives_string)
 
             print("Edition: " + name_of_edition_to_play)
-            print("Word: " + compare_string)
+            print("Word: " + new_temporary_string)
 
             print(hangman_arts[len(hangman_arts) - lives - 1])
             
