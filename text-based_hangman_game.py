@@ -182,7 +182,7 @@ def play_game():
     print(hangman + ": " + dialogue)
     print()
 
-    new_temporary_string = ""
+    new_temporary_string = temporary_string
     guess_word = ""
     letters_used = "Letters already used: "
 
@@ -209,8 +209,6 @@ def play_game():
             for i in range(len(word)):
                 if word[i] == guess:
                     new_temporary_string = compare_string[:i] + guess + compare_string[i+1:]
-                else:
-                    new_temporary_string = compare_string
                     
                 compare_string = new_temporary_string
 
@@ -237,8 +235,7 @@ def play_game():
                 print(hangman + ": Noooooooo-")
             print()
 
-        if new_temporary_string != "":
-            temporary_string = new_temporary_string
+        temporary_string = new_temporary_string
 
     if temporary_string == word or guess_word == word:
         print(""" __     __                    _       _ 
