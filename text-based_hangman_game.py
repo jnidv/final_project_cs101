@@ -226,12 +226,8 @@ def play_game():
             lives_string = "Lives: {}".format(lives)
             print("Oh no! The letter is not in the word. " + lives_string)
 
-            if new_temporary_string == "":
-                print("Edition: " + name_of_edition_to_play)
-                print("Word: " + temporary_string)
-            else:
-                print("Edition: " + name_of_edition_to_play)
-                print("Word: " + new_temporary_string)
+            print("Edition: " + name_of_edition_to_play)
+            print("Word: " + compare_string)
 
             print(hangman_arts[len(hangman_arts) - lives - 1])
             
