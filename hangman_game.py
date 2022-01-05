@@ -36,7 +36,7 @@ def select_edition():
     # Editions and selecting editions
     incorrect = True
     while incorrect:
-        id_of_edition_to_play = input("What edition do you want to play? [1 - NBA Players; 2 - Filipino Foods; 3 - Philippine Landmarks]: ")
+        id_of_edition_to_play = input("What edition do you want to play? {}: ".format(str([str(i+1) + " - " + list_of_editions[i][1] for i in range(len(list_of_editions))])))
         print()
 
         list_of_number_str = []
