@@ -36,8 +36,7 @@ def select_edition():
     # Editions and selecting editions
     incorrect = True
     while incorrect:
-        id_of_edition_to_play = input("What edition do you want to play? {}: ".format(str([str(i+1) + " - " + list_of_editions[i][1] for i in range(len(list_of_editions))])))
-        print()
+        id_of_edition_to_play = input("What edition do you want to play? {}: ".format([str(i+1) + " - " + list_of_editions[i][1] for i in range(len(list_of_editions))]))
 
         list_of_number_str = []
         for i in range(len(list_of_editions)):
@@ -48,6 +47,10 @@ def select_edition():
             name_of_edition_to_play = list_of_editions[int(id_of_edition_to_play) - 1][1]
             incorrect = False
             return edition_to_play, name_of_edition_to_play
+        else:
+            print("You have to enter a number from {first} to {second}.".format(first=1, second=len(list_of_editions)))
+        
+        print()
             
 def play_game():
     # Dialogues
