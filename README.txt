@@ -1,1 +1,1 @@
-This will be the Final Project for CS101.
+This game is a single-player hangman game using only conditions, loops, and functions.
