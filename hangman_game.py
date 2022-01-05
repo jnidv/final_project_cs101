@@ -1,7 +1,18 @@
 # Libraries
 import random
 import time
-from extras import all_variables
+
+# Variables from extras.py
+from extras import line
+from extras import title_screen
+from extras import game_rules
+from extras import you_win
+from extras import you_lose
+from extras import hangman_arts
+from extras import list_of_editions
+from extras import dialogues_start
+from extras import positive_dialogues
+from extras import negative_dialogues
 
 # Functions
 def main_menu():
@@ -82,7 +93,7 @@ def play_game():
     guess_word = ""
     letters_used = ""
 
-    # Loop until we win
+    # Loop until we win or lose
     while temporary_string != word and lives > 0 and guess_word != word:
         random_index2 = random.randint(0, len(negative_dialogues) - 1)
         negative_dialogue = negative_dialogues[random_index2]
@@ -118,7 +129,7 @@ def play_game():
         new_temporary_string = temporary_string
         lives_string = "Lives: {}".format(lives)
 
-        if (guess in word and not guess == "" and not guess == " ") and guess_word != word:
+        if (guess in word and guess != "") and guess_word != word:
             for i in range(len(word)):
                 if word[i] == guess:
                     temporary_string = new_temporary_string[:i] + word[i] + new_temporary_string[i+1:]
@@ -167,6 +178,7 @@ def play_game():
 play = True
 game_status = True
 
+# While loop for the status of the game
 while game_status:
     main_menu()
     print(line)
@@ -174,6 +186,7 @@ while game_status:
     ask_for_game_rule()
     print(line)
 
+    # Gameplay
     while play:  
         edition_to_play, name_of_edition_to_play = select_edition()
         print(line)
@@ -181,6 +194,7 @@ while game_status:
         play_game()
         print(line)
 
+        # Option to terminate gameplay
         again = input("Play again? (y/n): ")
         print()
         print(line)
@@ -188,12 +202,13 @@ while game_status:
         if again == "n":
             play = False
 
+    # Option to terminate the status of the game
     return_to_menu = input("Return to main menu? (y/n): ")
-    print()
-    print(line)
-
     if return_to_menu == "n":
         game_status = False
     else:
         play = True
         game_status = True
+
+    print()
+    print(line)
