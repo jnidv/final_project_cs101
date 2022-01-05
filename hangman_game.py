@@ -49,9 +49,7 @@ def select_edition():
             incorrect = False
             return edition_to_play, name_of_edition_to_play
         else:
-            print("You have to enter a number from {first} to {second}.".format(first=1, second=len(list_of_editions)))
-            print()
-        
+            print("You have to enter a number from {first} to {second}.".format(first=1, second=len(list_of_editions)))       
             
 def play_game():
     # Dialogues
