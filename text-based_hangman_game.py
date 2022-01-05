@@ -1,49 +1,26 @@
 # Libraries
 import random
-
-# Variables
-line = "-----------------------------------------------------------------------------------------------------------------------------------------------"
+import time
+from extras import line
+from extras import title_screen
+from extras import game_rules
+from extras import list_of_editions
+from extras import you_lose
+from extras import you_win
+from extras import hangman_arts
 
 # Functions
 def main_menu():
     # Main Menu
     print(line)
-    print(""" __    __       ___      .__   __.   ______  .___  ___.      ___      .__   __.   +---+ 
-|  |  |  |     /   \     |  \ |  |  /  ____| |   \/   |     /   \     |  \ |  |   |   | 
-|  |__|  |    /  ^  \    |   \|  | |  |  __  |  \  /  |    /  ^  \    |   \|  |   O   | 
-|   __   |   /  /_\  \   |  . `  | |  | |_ | |  |\/|  |   /  /_\  \   |  . `  |  /|\  | 
-|  |  |  |  /  _____  \  |  |\   | |  |__| | |  |  |  |  /  _____  \  |  |\   |  / \  | 
-|__|  |__| /__/     \__\ |__| \__|  \______| |__|  |__| /__/     \__\ |__| \__| =========
-""", """
-WELCOME TO TEXT-BASED SINGLEPLAYER HANGMAN CODED IN PYTHON
-Creator: Jan Neal Isaac D. Villamin
-""")
+    print(title_screen)
     print(line)
+    time.sleep(2)
     play = input("Press ENTER to play!: ")
     print()
 
 def ask_for_game_rule():
     # Game Rules
-    game_rules = """GAME PLAY
-The program will ask you to select an EDITION, themed sets of words. 
-The executer will ask you a RANDOM WORD from that EDITION.
-
-A number of DASHES equivalent to the number of letters in the word will be displayed. 
-If a guessing player suggests a LETTER that occurs in the word, the program fills in the blanks with that letter in the right places. 
-
-If the word does not contain the suggested letter, the program draws one element of a hangmans gallows. 
-As the game progresses, a segment of the gallows and of a victim is added for every suggested letter not in the word. 
-
-The number of incorrect guesses before the game ends is up to the difficulty of the game, 
-but completing a character in a noose provides a minimum of SEVEN wrong answers until the game ends. 
-
-RESTRICTIONS
-Follow the input formats given as much as possible. Only lowercase letters are allowed. 
-Otherwise, bugs might go flyin' in your screen.
-
-OBJECTIVE
-Guess the word or phrase before your hangman gets hanged!
-"""
 
     yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
     print()
@@ -53,20 +30,6 @@ Guess the word or phrase before your hangman gets hanged!
 
 def select_edition():
     # Editions and selecting editions
-    nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", 
-    "damian lillard", "chris paul", "luka doncic", "russell westbrook", "joel embiid", "kawhi leonard", "kyrie irving", 
-    "karl anthony towns", "demar derozan", "carmelo anthony", "klay thompson", "paul george", "jimmy butler", "draymond green", 
-    "kyle lowry", "kobe bryant", "michael jordan", "jayson tatum", "bradley beal", "devin booker", "donovan mitchell", 
-    "trae young", "zion williamson", "ja morant", "ben simmons", "zach lavine", "jamal murray"]
-
-    filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balut", "taho", 
-    "lechon", "sisig", "crispy pata", "chicken inasal", "pancit palabok", "arroz caldo", "kare kare", "tapa", "dinuguan", "puto", 
-    "pinakbet", "laing", "pancit habhab", "longaniza", "lumpia", "bicol express", "liempo", "halo halo", "champorado", "turon"]
-
-    philippines_landmarks = ["chocolate hills", "banaue rice terraces", "mayon volcano", "taal volcano", "fort santiago", 
-    "rizal monument", "tarsiers", "boracay", "tubbataha reefs", "puerto princesa subterranean river", "maria cristina falls"]
-
-    list_of_editions = [[nba_players, "NBA Players"], [filipino_foods, "Filipino Foods"], [philippines_landmarks, "Philippine Landmarks"]]
 
     incorrect = True
     while incorrect:
@@ -84,65 +47,6 @@ def select_edition():
             return edition_to_play, name_of_edition_to_play
             
 def play_game():
-    # Hangman ASCII arts
-    hangman_arts = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''','''
-  +---+
-  |   |
-  O   |
-      |
- /|\  |
- / \  |
-=========''']
-
     # Dialogues
     dialogues_start = ["Please help me!", "You can do it!", "Focus!", "I love you! So please save me."]
 
@@ -158,9 +62,11 @@ def play_game():
     hangman = input("Name your hangman: ")
     gender = input("Gender of your hangman [him/her/them/hir]: ")
     print()
-    hanged = input("Oh no! " + hangman + " will be hanged! [Press ENTER to continue]: ")
-    initialize = input("Guess the word to release " + gender + ". [Press ENTER to start game]: ")
-
+    time.sleep(1)
+    print("Oh no! " + hangman + " will be hanged!")
+    time.sleep(1)
+    print("Guess the word to release " + gender + ".")
+    time.sleep(1)
     print()
     print(line)
 
@@ -241,25 +147,12 @@ def play_game():
         temporary_string = new_temporary_string
 
     if temporary_string == word or guess_word == word:
-        print(""" __     __                    _       _ 
- \ \   / /                   (_)     | |
-  \ \_/ /__  _   _  __      ___ _ __ | |
-   \   / _ \| | | | \ \ /\ / / | '_ \| |
-    | | (_) | |_| |  \ V  V /| | | | |_|
-    |_|\___/ \__,_|   \_/\_/ |_|_| |_(_)
-    """)
+        print(you_win)
         print("The word is " + word + ".")
         print(hangman + ": Thank you!")
         print()
     else:
-        print(""" __     __           _                  _ 
- \ \   / /          | |                | |
-  \ \_/ /__  _   _  | | ___  ___  ___  | |
-   \   / _ \| | | | | |/ _ \/ __|/ _ \ | |
-    | | (_) | |_| | | | (_) \__ \  __/ |_|
-    |_|\___/ \__,_| |_|\___/|___/\___| (_)
-                                          
-    """)
+        print(you_lose)
         print("The word is " + word + ".")
         print()
 
