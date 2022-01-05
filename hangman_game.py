@@ -37,6 +37,7 @@ def select_edition():
     incorrect = True
     while incorrect:
         id_of_edition_to_play = input("What edition do you want to play? {}: ".format([str(i+1) + " - " + list_of_editions[i][1] for i in range(len(list_of_editions))]))
+        print()
 
         list_of_number_str = []
         for i in range(len(list_of_editions)):
@@ -49,8 +50,8 @@ def select_edition():
             return edition_to_play, name_of_edition_to_play
         else:
             print("You have to enter a number from {first} to {second}.".format(first=1, second=len(list_of_editions)))
+            print()
         
-        print()
             
 def play_game():
     # Dialogues
