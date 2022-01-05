@@ -32,21 +32,6 @@ OBJECTIVE
 Guess the word or phrase before your hangman gets hanged!
 """
 
-nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", 
-    "damian lillard", "chris paul", "luka doncic", "russell westbrook", "joel embiid", "kawhi leonard", "kyrie irving", 
-    "karl anthony towns", "demar derozan", "carmelo anthony", "klay thompson", "paul george", "jimmy butler", "draymond green", 
-    "kyle lowry", "kobe bryant", "michael jordan", "jayson tatum", "bradley beal", "devin booker", "donovan mitchell", 
-    "trae young", "zion williamson", "ja morant", "ben simmons", "zach lavine", "jamal murray"]
-
-filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balut", "taho", 
-    "lechon", "sisig", "crispy pata", "chicken inasal", "pancit palabok", "arroz caldo", "kare kare", "tapa", "dinuguan", "puto", 
-    "pinakbet", "laing", "pancit habhab", "longaniza", "lumpia", "bicol express", "liempo", "halo halo", "champorado", "turon"]
-
-philippines_landmarks = ["chocolate hills", "banaue rice terraces", "mayon volcano", "taal volcano", "fort santiago", 
-    "rizal monument", "tarsiers", "boracay", "tubbataha reefs", "puerto princesa subterranean river", "maria cristina falls"]
-
-list_of_editions = [[nba_players, "NBA Players"], [filipino_foods, "Filipino Foods"], [philippines_landmarks, "Philippine Landmarks"]]
-
 you_win = """ __     __                    _       _ 
  \ \   / /                   (_)     | |
   \ \_/ /__  _   _  __      ___ _ __ | |
@@ -120,3 +105,31 @@ hangman_arts = ['''
  /|\  |
  / \  |
 =========''']
+
+displays = [line, title_screen, game_rules, you_win, you_lose, hangman_arts]
+
+nba_players = ["lebron james", "stephen curry", "kevin durant", "giannis antetokounmpo", "james harden", "anthony davis", 
+    "damian lillard", "chris paul", "luka doncic", "russell westbrook", "joel embiid", "kawhi leonard", "kyrie irving", 
+    "karl anthony towns", "demar derozan", "carmelo anthony", "klay thompson", "paul george", "jimmy butler", "draymond green", 
+    "kyle lowry", "kobe bryant", "michael jordan", "jayson tatum", "bradley beal", "devin booker", "donovan mitchell", 
+    "trae young", "zion williamson", "ja morant", "ben simmons", "zach lavine", "jamal murray"]
+
+filipino_foods = ["adobo", "sinigang", "nilaga", "tinola", "bulalo", "menudo", "afritada", "kwek kwek", "balut", "taho", 
+    "lechon", "sisig", "crispy pata", "chicken inasal", "pancit palabok", "arroz caldo", "kare kare", "tapa", "dinuguan", "puto", 
+    "pinakbet", "laing", "pancit habhab", "longaniza", "lumpia", "bicol express", "liempo", "halo halo", "champorado", "turon"]
+
+philippines_landmarks = ["chocolate hills", "banaue rice terraces", "mayon volcano", "taal volcano", "fort santiago", 
+    "rizal monument", "tarsiers", "boracay", "tubbataha reefs", "puerto princesa subterranean river", "maria cristina falls"]
+
+list_of_editions = [[nba_players, "NBA Players"], [filipino_foods, "Filipino Foods"], [philippines_landmarks, "Philippine Landmarks"]]
+
+dialogues_start = ["Please help me!", "You can do it!", "Focus!", "I love you! So, please save me."]
+
+positive_dialogues = ["Good job!", "Keep it up!", "Whooo!", "GRAPE!"]
+
+negative_dialogues = ["Better guess that word!", "If anything happens, at least know that I love you.", "I know you can do better than that!", 
+    "Oh c'mon!"]
+
+all_dialogues = [dialogues_start, positive_dialogues, negative_dialogues]
+
+all_variables = [displays, list_of_editions, all_dialogues]
