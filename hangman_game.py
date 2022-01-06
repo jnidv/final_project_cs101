@@ -1,6 +1,9 @@
-# Libraries
+# Modules
 import random
 import time
+import os
+clear = lambda: os.system('cls')
+clear()
 
 # Variables from extras.py
 from extras import line
@@ -23,15 +26,16 @@ def main_menu():
     time.sleep(1)
     play = input("Press ENTER to play!: ")
     print()
-
+    
 def ask_for_game_rule():
     # Game Rules
     yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
     print()
+    clear()
 
-    if yes_no_game_rules == "y":
+    if yes_no_game_rules.strip().lower() == "y":
         print(game_rules)
-
+        
 def select_edition():
     # Editions and selecting editions
     incorrect = True
@@ -66,7 +70,9 @@ def play_game():
     print("Guess the word to release " + gender + ".")
     time.sleep(1)
     print()
+    clear()
     print(line)
+    
 
     # Randomly selecting word
     random_index4 = random.randint(0, len(edition_to_play) - 1)
@@ -123,6 +129,7 @@ def play_game():
         guess_word_raw = input("Guess word (press ENTER if you don't have any guess): ")
         guess_word = guess_word_raw.strip().lower()
         print()
+        clear()
 
         letters_used += guess + " "
         print(line)
@@ -140,6 +147,7 @@ def play_game():
 
             if temporary_string != word:
                 print("Nice work!")
+                time.sleep(1)
                 print(lives_string)
                 print("Edition: " + name_of_edition_to_play)
                 print("Word: " + new_temporary_string)
@@ -151,6 +159,7 @@ def play_game():
             lives = lives - 1
             lives_string = "Lives: {}".format(lives)
             print("The letter is not in the word.")
+            time.sleep(1)
             print(lives_string)
 
             print("Edition: " + name_of_edition_to_play)
@@ -168,11 +177,13 @@ def play_game():
 
     if temporary_string == word or guess_word == word:
         print(you_win)
+        time.sleep(1)
         print("The word is " + word + ".")
         print(hangman + ": Thank you!")
         print()
     else:
         print(you_lose)
+        time.sleep(1)
         print("The word is " + word + ".")
         print()
 
@@ -183,15 +194,18 @@ game_status = True
 # While loop for the status of the game
 while game_status:
     main_menu()
+    clear()
     print(line)
-
+    
     ask_for_game_rule()
     print(line)
+    
 
     # Gameplay
     while play:  
         edition_to_play, name_of_edition_to_play = select_edition()
         print(line)
+        clear()
 
         play_game()
         print(line)
@@ -199,18 +213,21 @@ while game_status:
         # Option to terminate gameplay
         again = input("Play again? (y/n): ")
         print()
+        clear()
         print(line)
 
-        if again == "n":
+        if again.strip().lower() == "n":
             play = False
 
     # Option to terminate the status of the game
     return_to_menu = input("Return to main menu? (y/n): ")
-    if return_to_menu == "n":
+    
+    if return_to_menu.strip().lower() == "n":
         game_status = False
     else:
         play = True
         game_status = True
 
     print()
+    clear()
     print(line)
