@@ -32,6 +32,7 @@ def ask_for_game_rule():
     yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
     print()
     clear()
+    print(line)
 
     if yes_no_game_rules.strip().lower() == "y":
         print(game_rules)
@@ -90,6 +91,7 @@ def play_game():
     lives_string = "Lives: {}".format(lives)
 
     print("Let's start the game!")
+    print()
     time.sleep(1) 
     print(lives_string)
     print("Edition: " + name_of_edition_to_play)
@@ -133,8 +135,7 @@ def play_game():
 
         letters_used += guess + " "
         print(line)
-        print("Letter used: " + letters_used)
-
+        
         new_temporary_string = temporary_string
         lives_string = "Lives: {}".format(lives)
 
@@ -147,7 +148,9 @@ def play_game():
 
             if temporary_string != word:
                 print("Nice work!")
+                print()
                 time.sleep(1)
+                print("Letter used: " + letters_used)
                 print(lives_string)
                 print("Edition: " + name_of_edition_to_play)
                 print("Word: " + new_temporary_string)
@@ -159,7 +162,9 @@ def play_game():
             lives = lives - 1
             lives_string = "Lives: {}".format(lives)
             print("The letter is not in the word.")
+            print()
             time.sleep(1)
+            print("Letter used: " + letters_used)
             print(lives_string)
 
             print("Edition: " + name_of_edition_to_play)
@@ -178,12 +183,14 @@ def play_game():
     if temporary_string == word or guess_word == word:
         print(you_win)
         time.sleep(1)
+        print("Letter used: " + letters_used)
         print("The word is " + word + ".")
         print(hangman + ": Thank you!")
         print()
     else:
         print(you_lose)
         time.sleep(1)
+        print("Letter used: " + letters_used)
         print("The word is " + word + ".")
         print()
 
@@ -204,9 +211,9 @@ while game_status:
     # Gameplay
     while play:  
         edition_to_play, name_of_edition_to_play = select_edition()
-        print(line)
         clear()
-
+        print(line)
+        
         play_game()
         print(line)
 
