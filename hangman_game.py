@@ -237,4 +237,3 @@ while game_status:
 
     print()
     clear()
-    print(line)
