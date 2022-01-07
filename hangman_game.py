@@ -3,7 +3,6 @@ import random
 import time
 import os
 clear = lambda: os.system('cls')
-clear()
 
 # Variables from extras.py
 from extras import line
@@ -72,9 +71,7 @@ def play_game():
     time.sleep(1)
     print()
     clear()
-    print(line)
     
-
     # Randomly selecting word
     random_index4 = random.randint(0, len(edition_to_play) - 1)
     word = edition_to_play[random_index4]
@@ -90,6 +87,7 @@ def play_game():
     lives = len(hangman_arts) - 1
     lives_string = "Lives: {}".format(lives)
 
+    print(line)
     print("Let's start the game!")
     print()
     time.sleep(1) 
@@ -195,6 +193,7 @@ def play_game():
         print()
 
 # Play game
+clear()
 play = True
 game_status = True
 
