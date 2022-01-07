@@ -32,9 +32,9 @@ def ask_for_game_rule():
     yes_no_game_rules = input("Do you want to read the game rules? (y/n): ")
     print()
     clear()
-    print(line)
 
     if yes_no_game_rules.strip().lower() == "y":
+        print(line)
         print(game_rules)
         
 def select_edition():
